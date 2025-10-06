@@ -1,7 +1,13 @@
 import React from 'react';
 
 const Home = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <svg>
+        <use href="/campers-sprite.svg#campers-logo" />
+      </svg>
+    </>
+  );
 };
 
 export default Home;
