@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding: 24px 64px;
+  position: relative;
+}
+.headerLink {
+  display: flex;
+  color: #101828;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  gap: 32px;
+  transition: color 0.3s ease;
+}
+.active {
+  color: #d84343;
+}
+
+.headerLogo {
+  position: absolute;
+  top: 28px;
+  bottom: 28px;
+  left: 64px;
+  width: 136px;
+  height: 16px;
+}

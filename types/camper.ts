@@ -1,42 +1,42 @@
+export interface Camper {
+  id: string;
+  name: string;
+  price: number;
+  rating: number;
+  location: string;
+  description: string;
+  form: string;
+  length: string;
+  width: string;
+  height: string;
+  tank: string;
+  consumption: string;
+  transmission: string;
+  engine: string;
+  AC?: boolean;
+  bathroom?: boolean;
+  kitchen?: boolean;
+  TV?: boolean;
+  radio?: boolean;
+  refrigerator?: boolean;
+  microwave?: boolean;
+  gas?: boolean;
+  water?: boolean;
+  gallery: {
+    thumb: string;
+    original: string;
+  }[];
+  reviews: Review[];
+}
 
 export interface Review {
-    reviewer: string;
-    comment: string;
-    rating: number;
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
 }
-
-export interface Features {
-    AC?: boolean;
-    kitchen?: boolean;
-    bathroom?: boolean;
-    TV?: boolean;
-    radio?: boolean;
-    refrigerator?: boolean;
-    microvawe?: boolean;
-    gas?: boolean;
-    water?: boolean;
-    transmission?: string;
-    engine?: string;
-}
-
-export interface Details {
-    form?: string;
-    length?: string;
-    width?: string;
-    height?: string;
-    tank?: string;
-    consumption?: string;
-}
-
-export interface Camper {
-    id: string;
-    name: string;
-    price: number;
-    location: string;
-    type: string;
-    gallery: string[];
-    rating: number;
-    features: Features;
-    details: Details;
-    review: Review;
-}
+export type Filters = Partial<{
+  location: string;
+  type: string;
+  AC: boolean;
+  kitchen: boolean;
+}>;

@@ -1,22 +1,22 @@
-import { Camper } from "@/types/camper";
-import { GetCampersParams } from "@/types/params";
+import { Camper, Filters } from "@/types/camper";
 import { api } from "./api";
 
 
-export const getCampers = async (params: GetCampersParams = {}): Promise<Camper[]> => {
-    const { page = 1, perPage = 6, ...filters } = params;
 
-    const res = await api.get<Camper[]>("/campers", {
-        params:{page, limit: perPage, ...filters}
-    })
+export const getCampers = async (
+  filters: Filters,
+  page: number,
+  limit: number
+): Promise<Camper[]> => {
+  const response = await api.get<Camper[]>('/campers', {
+    params: {
+      ...filters,
+      page,
+      limit,
+    },
+  });
+  return response.data;
+};
 
-    return res.data;
-}
 
 
-export const getCamperById = async (id: string) => {
-
-    const res = await api.get<Camper>(`/campers/${id}`);
-    
-    return res.data;
-}
