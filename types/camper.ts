@@ -36,7 +36,18 @@ export interface Review {
 }
 export type Filters = Partial<{
   location: string;
-  type: string;
+  form: 'panelTruck' | 'integrated' | 'alcove';
   AC: boolean;
   kitchen: boolean;
+  bathroom: boolean;
+  TV: boolean;
 }>;
+
+export interface GetCampersParams { 
+    page?: number;
+    perPage?: number;
+    location?: string;
+    type?: string;
+    AC?: boolean;
+    kitchen?: boolean;
+}

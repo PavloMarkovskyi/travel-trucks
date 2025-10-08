@@ -1,9 +1,11 @@
 import { fetchCamperById } from '@/lib/serverApi';
-import React from 'react';
+import { Camper } from '@/types/camper';
 
-const CapmperPage = async () => {
-  const camper = await fetchCamperById(params.id);
-  return <div>CapmperPage</div>;
-};
-
-export default CapmperPage;
+export default async function CamperPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const camper: Camper = await fetchCamperById(params.id);
+  return <CamperDetails camper={camper} />;
+}

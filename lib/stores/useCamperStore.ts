@@ -43,12 +43,17 @@ export const useCamperStore = create<CamperState>()(
           loading: false,
         })),
 
-      appendCampers: (campers) =>
-        set((state) => ({
-          campers: [...state.campers, ...campers],
-          hasMore: campers.length >= state.perPage,
-          loading: false,
-        })),
+    appendCampers: (newCampers) =>
+  set((state) => {
+    const existingIds = new Set(state.campers.map((c) => c.id));
+    const uniqueCampers = newCampers.filter((c) => !existingIds.has(c.id));
+    return {
+      campers: [...state.campers, ...uniqueCampers],
+      hasMore: uniqueCampers.length >= state.perPage,
+      loading: false,
+    };
+  }),
+
 
       addFavorite: (id) =>
         set((state) =>
