@@ -1,12 +1,26 @@
 import { useCamperStore } from '@/lib/stores/useCamperStore';
 import { Camper } from '@/types/camper';
+import Image from 'next/image';
 
 const CamperCard = ({ camper }: { camper: Camper }) => {
   const { favorites, toggleFavorite } = useCamperStore();
 
   return (
-    <div>
-      <img src={camper.gallery[0]?.thumb} alt={camper.name} />
+    <main>
+      <div
+        style={{
+          position: 'relative',
+          width: '292px',
+          height: '320px',
+        }}
+      >
+        <Image
+          fill
+          style={{ objectFit: 'cover', borderRadius: '10px' }}
+          src={camper.gallery[0]?.thumb}
+          alt={camper.name}
+        />
+      </div>
       <h3>{camper.name}</h3>
       <p>Price: {camper.price.toFixed(2)}</p>
       <p>Location: {camper.location}</p>
@@ -14,7 +28,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
         {favorites.includes(camper.id) ? '★' : '☆'} Favorite
       </button>
       <a href={`/catalog/${camper.id}`}>Show More</a>
-    </div>
+    </main>
   );
 };
 export default CamperCard;

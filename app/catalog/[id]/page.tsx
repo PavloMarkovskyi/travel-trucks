@@ -1,11 +1,21 @@
+import CamperDetails from '@/components/CamperDetails/CamperDetails';
 import { fetchCamperById } from '@/lib/serverApi';
-import { Camper } from '@/types/camper';
+import { notFound } from 'next/navigation';
 
-export default async function CamperPage({
-  params,
-}: {
+interface CamperPageProps {
   params: { id: string };
-}) {
-  const camper: Camper = await fetchCamperById(params.id);
-  return <CamperDetails camper={camper} />;
 }
+
+const CamperPage = async ({ params }: CamperPageProps) => {
+  const camper = await fetchCamperById(params.id);
+  if (!camper) {
+    return notFound;
+  }
+  return (
+    <div>
+      <CamperDetails camper={camper} />
+    </div>
+  );
+};
+
+export default CamperPage;
