@@ -3,13 +3,14 @@ import { fetchCamperById } from '@/lib/serverApi';
 import { notFound } from 'next/navigation';
 
 interface CamperPageProps {
-  params: { id: string };
+  params: { id: string } | Promise<{ id: string }>;
 }
 
 const CamperPage = async ({ params }: CamperPageProps) => {
-  const camper = await fetchCamperById(params.id);
+  const { id } = await params;
+  const camper = await fetchCamperById(id);
   if (!camper) {
-    return notFound;
+    notFound();
   }
   return (
     <div>

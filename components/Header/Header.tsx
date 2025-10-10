@@ -1,22 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { usePathname } from 'next/navigation';
 const Header = () => {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <header className={styles.header}>
       <Link href="/" aria-label="Home">
         <svg className={styles.headerLogo}>
-          <use href="./campers-sprite.svg#campers-logo" />
+          <use href="/logo.svg#logo" />
         </svg>
       </Link>
       <div className={styles.headerLink}>

@@ -5,6 +5,8 @@ import CamperHeader from '../CamperHeader/CamperHeader';
 import Gallery from '../Gallery/Gallery';
 import { Camper } from '@/types/camper';
 import Tabs from '../Tabs/Tabs';
+import Features from '../Features/Features';
+import Reviews from '../Reviews/Reviews';
 interface Props {
   camper: Camper;
 }
@@ -17,12 +19,12 @@ const CamperDetails = ({ camper }: Props) => {
       <Gallery images={camper.gallery} />
       <p>{camper.description}</p>
       <Tabs active={tab} onChange={setTab} />
-      {/* {tab === 'features' ? (
+      {tab === 'features' ? (
         <Features camper={camper} />
       ) : (
-        <Reviews camper={camper.reviews} />
+        <Reviews reviews={camper.reviews} />
       )}
-      ; */}
+      ;
     </div>
   );
 };

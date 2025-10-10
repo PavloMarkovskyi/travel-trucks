@@ -47,7 +47,10 @@ export interface GetCampersParams {
     page?: number;
     perPage?: number;
     location?: string;
-    type?: string;
+    form?: string;
     AC?: boolean;
     kitchen?: boolean;
 }
+
+export type FeatureIconKey = 'transmission' | 'engine' | 'AC' | 'bathroom' | 'kitchen' | 'TV' | 'radio' | 'refrigerator' | 'microwave' | 'gas' | 'water';
+export type DetailsKey = 'form' | 'length' | 'width' | 'height' | 'tank' | 'consumption';
