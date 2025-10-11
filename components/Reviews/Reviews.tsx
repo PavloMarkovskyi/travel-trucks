@@ -10,28 +10,32 @@ const Reviews = ({ reviews }: Props) => {
     return <div>No reviews yet</div>;
   }
   return (
-    <section>
-      <ul>
+    <section className={styles.wrapper}>
+      <ul className={styles.reviewList}>
         {reviews.map(({ reviewer_name, reviewer_rating, comment }, index) => (
-          <li key={index}>
-            <div>
-              <div>{reviewer_name.charAt(0).toUpperCase()}</div>
-              <span>{reviewer_name}</span>
-              <span className={styles.rating}>
-                {[...Array(5)].map((_, index) => (
-                  <svg key={index} className={styles.retingIcon}>
-                    <use
-                      href={
-                        index < reviewer_rating
-                          ? '/reviews.svg#reviews-filled'
-                          : '/reviews.svg#reviews'
-                      }
-                    />
-                  </svg>
-                ))}
-              </span>
+          <li className={styles.reviewItem} key={index}>
+            <div className={styles.reviewer}>
+              <div className={styles.reviewerAvatar}>
+                {reviewer_name.charAt(0).toUpperCase()}
+              </div>
+              <div className={styles.reviewerName}>
+                <p>{reviewer_name}</p>
+                <span className={styles.rating}>
+                  {[...Array(5)].map((_, index) => (
+                    <svg key={index} className={styles.retingIcon}>
+                      <use
+                        href={
+                          index < reviewer_rating
+                            ? '/reviews.svg#reviews-filled'
+                            : '/reviews.svg#reviews'
+                        }
+                      />
+                    </svg>
+                  ))}
+                </span>
+              </div>
             </div>
-            <p>{comment}</p>
+            <p className={styles.reviewComment}>{comment}</p>
           </li>
         ))}
       </ul>
