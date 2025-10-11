@@ -30,7 +30,7 @@ export const getCampers = async (
   };
 
   const response = await api.get<GetCampersResponse>("/campers", { params });
-  console.log("API response:", response.data);
+ 
 
 
   return Array.isArray(response.data.items) ? response.data.items : [];
