@@ -3,6 +3,7 @@
 import { useCamperStore } from '@/lib/stores/useCamperStore';
 import styles from './Filters.module.css';
 import { Filters } from '@/types/camper';
+import { getCampers } from '@/lib/clientApi';
 
 const FiltersComponent = () => {
   const { filters, setFilters } = useCamperStore();
@@ -26,23 +27,54 @@ const FiltersComponent = () => {
       form: filters.form === value ? '' : value,
     });
   };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const {
+      filters,
+      perPage,
+      setCampers,
+      setLoading,
+      setError,
+      setPage,
+      resetCampers,
+    } = useCamperStore.getState();
+
+    resetCampers();
+    setLoading(true);
+    setPage(1);
+
+    try {
+      const campers = await getCampers(filters, 1, perPage);
+      setCampers(campers);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('Failed to fetch campers');
+      }
+    }
+  };
 
   return (
-    <aside>
-      <form>
-        <div>
-          <svg className={styles.icon}>
-            <use href="/reviews.svg#map" />
-          </svg>
-          <input
-            type="text"
-            name="location"
-            placeholder="Location"
-            onChange={handleTextChange}
-          />
-        </div>
-        <fieldset>
-          <legend>Vehicle Equipment</legend>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.searchBox}>
+        <p className={styles.searchTitle}>Location</p>
+        <svg className={styles.searchIcon}>
+          <use href="/reviews.svg#map" />
+        </svg>
+        <input
+          className={styles.searchInput}
+          type="text"
+          name="location"
+          placeholder="Kyiv, Ukraine"
+          onChange={handleTextChange}
+        />
+      </div>
+      <div className={styles.filterBox}>
+        <p className={styles.filterTitle}>Filters</p>
+        <fieldset className={styles.fieldSet}>
+          <legend className={styles.title}>Vehicle Equipment</legend>
           <label>
             <input
               type="checkbox"
@@ -104,8 +136,8 @@ const FiltersComponent = () => {
             <span>Bathroom</span>
           </label>
         </fieldset>
-        <fieldset>
-          <legend>Vehicle Type</legend>
+        <fieldset className={styles.fieldSet}>
+          <legend className={styles.title}>Vehicle Type</legend>
           <label
             className={
               filters.form === 'panelTruck'
@@ -161,8 +193,11 @@ const FiltersComponent = () => {
             <span>Alcove</span>
           </label>
         </fieldset>
-      </form>
-    </aside>
+      </div>
+      <button type="submit" className={styles.searchBtn}>
+        Search
+      </button>
+    </form>
   );
 };
 

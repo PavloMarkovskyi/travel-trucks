@@ -56,7 +56,6 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
           ? camper.description.slice(0, 100) + '...'
           : camper.description}
       </p>
-
       <div className={styles.features}>
         {camper.transmission && (
           <span>

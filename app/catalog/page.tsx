@@ -5,6 +5,7 @@ import { useCamperStore } from '@/lib/stores/useCamperStore';
 import { getCampers } from '@/lib/clientApi';
 import FiltersComponent from '@/components/Filters/Filters';
 import CamperCard from '@/components/CamperCard/CamperCard';
+import styles from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const {
@@ -41,11 +42,11 @@ const CatalogPage = () => {
   }, [filters, page, perPage, appendCampers, setLoading, setError]);
 
   return (
-    <main>
-      <aside>
+    <main className={styles.main}>
+      <aside className={styles.aside}>
         <FiltersComponent />
       </aside>
-      <section style={{ flex: 1 }}>
+      <section>
         {campers.length > 0
           ? campers.map(camper => (
               <CamperCard key={camper.id} camper={camper} />
