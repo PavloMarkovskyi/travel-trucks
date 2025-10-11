@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import styles from './BookingForm.module.css';
 
 const BookingForm = () => {
   const [form, setForm] = useState({
@@ -23,12 +24,16 @@ const BookingForm = () => {
     setForm({ name: '', email: '', comment: '', date: '' });
   };
   return (
-    <section>
-      <h3>Book your campervan now</h3>
-      <p>Stay connected! We are always ready to help you.</p>
+    <section className={styles.wrapper}>
+      <h3 className={styles.title}>Book your campervan now</h3>
+      <p className={styles.text}>
+        Stay connected! We are always ready to help you.
+      </p>
+
       {success && <div>✅ Booking successful!</div>}
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
+          className={styles.input}
           type="text"
           name="name"
           placeholder="Name*"
@@ -37,6 +42,7 @@ const BookingForm = () => {
           required
         />
         <input
+          className={styles.input}
           type="email"
           name="email"
           placeholder="Email*"
@@ -45,20 +51,28 @@ const BookingForm = () => {
           required
         />
         <input
-          type="date"
+          className={styles.inputDate}
+          type="text"
           name="date"
           placeholder="Booking date*"
           value={form.date}
           onChange={handleChange}
+          onFocus={e => (e.target.type = 'date')}
+          onBlur={e => {
+            if (!e.target.value) e.target.type = 'text';
+          }}
           required
         />
         <textarea
+          className={styles.textarea}
           name="comment"
           placeholder="Comment"
           value={form.comment}
           onChange={handleChange}
         ></textarea>
-        <button type="submit">Send</button>
+        <button className={styles.formBtn} type="submit">
+          Send
+        </button>
       </form>
     </section>
   );
