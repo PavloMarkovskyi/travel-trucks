@@ -29,7 +29,7 @@
 
 ### 1. Клонування репозиторію
 
-git clone https://github.com/your-username/travel-trucks.git cd travel-trucks
+git clone https://github.com/PavloMarkovskyi/travel-trucks.git cd travel-trucks
 
 2. Встановлення залежностей npm install
 
@@ -55,11 +55,7 @@ page, limit — пагінація
 
 🧑‍💻 Автор
 
-Павло Марковський Студент курсу Fullstack Developer від GoIT 📧 Email:
+Марковський Павло Студент курсу Fullstack Developer від GoIT 📧 Email:
 pash199060@gmail.com
 
 🔗 [GitHub](https://github.com/PavloMarkovskyi)
-
-```
-
-```
