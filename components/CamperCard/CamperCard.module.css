@@ -13,7 +13,6 @@
   min-width: 292px;
 }
 .image {
-  background-position: center;
   object-fit: cover;
   border-radius: 10px;
 }

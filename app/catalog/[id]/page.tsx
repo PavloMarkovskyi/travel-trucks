@@ -1,6 +1,7 @@
 import CamperDetails from '@/components/CamperDetails/CamperDetails';
 import { fetchCamperById } from '@/lib/serverApi';
 import { notFound } from 'next/navigation';
+import styles from './CamperPage.module.css';
 
 interface CamperPageProps {
   params: { id: string } | Promise<{ id: string }>;
@@ -13,9 +14,9 @@ const CamperPage = async ({ params }: CamperPageProps) => {
     notFound();
   }
   return (
-    <div>
+    <main className={styles.main}>
       <CamperDetails camper={camper} />
-    </div>
+    </main>
   );
 };
 

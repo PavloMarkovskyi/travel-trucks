@@ -7,7 +7,7 @@ interface Props {
 
 const Tabs = ({ active, onChange }: Props) => {
   return (
-    <div>
+    <div className={styles.tabs}>
       <button
         className={`${styles.tab} ${active === 'features' ? styles.active : ''}`}
         onClick={() => onChange('features')}

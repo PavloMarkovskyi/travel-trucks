@@ -8,6 +8,7 @@ import Tabs from '../Tabs/Tabs';
 import Features from '../Features/Features';
 import Reviews from '../Reviews/Reviews';
 import BookingForm from '../BookingForm/BookingForm';
+import styles from './CamperDetails.module.css';
 interface Props {
   camper: Camper;
 }
@@ -18,15 +19,16 @@ const CamperDetails = ({ camper }: Props) => {
     <div>
       <CamperHeader camper={camper} />
       <Gallery images={camper.gallery} />
-      <p>{camper.description}</p>
+      <p className={styles.description}>{camper.description}</p>
       <Tabs active={tab} onChange={setTab} />
-      {tab === 'features' ? (
-        <Features camper={camper} />
-      ) : (
-        <Reviews reviews={camper.reviews} />
-      )}
-      ;
-      <BookingForm />
+      <div className={styles.tabs}>
+        {tab === 'features' ? (
+          <Features camper={camper} />
+        ) : (
+          <Reviews reviews={camper.reviews} />
+        )}
+        <BookingForm />
+      </div>
     </div>
   );
 };

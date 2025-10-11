@@ -1,6 +1,6 @@
 import { Camper } from '@/types/camper';
 import { formatPrice, formatRating } from '@/utils/fomat';
-
+import styles from './CamperHeader.module.css';
 interface Props {
   camper: Camper;
 }
@@ -8,15 +8,22 @@ interface Props {
 const CamperHeader = ({ camper }: Props) => {
   return (
     <div>
-      <h1>{camper.name}</h1>
-      <div>
-        <p>
-          {' '}
-          ★ {formatRating(camper.rating)} ({camper.reviews.length} Reviews)
+      <h1 className={styles.title}>{camper.name}</h1>
+      <div className={styles.review}>
+        <p className={styles.text}>
+          <svg className={styles.reviewIcon}>
+            <use href="/reviews.svg#reviews-filled" />
+          </svg>
+          {formatRating(camper.rating)}({camper.reviews.length} Reviews)
         </p>
-        <p>{camper.location}</p>
+        <p>
+          <svg className={styles.mapIcon}>
+            <use href="/reviews.svg#map" />
+          </svg>
+          {camper.location}
+        </p>
       </div>
-      <p>{formatPrice(camper.price)}</p>
+      <p className={styles.price}>€{formatPrice(camper.price)}</p>
     </div>
   );
 };

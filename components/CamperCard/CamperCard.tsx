@@ -2,6 +2,7 @@ import { useCamperStore } from '@/lib/stores/useCamperStore';
 import { Camper } from '@/types/camper';
 import Image from 'next/image';
 import styles from './CamperCard.module.css';
+import { formatPrice, formatRating } from '@/utils/fomat';
 
 const CamperCard = ({ camper }: { camper: Camper }) => {
   const { favorites, toggleFavorite } = useCamperStore();
@@ -14,6 +15,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
           <Image
             className={styles.image}
             fill
+            sizes="(max-width: 768px) 100vw, 33vw"
             src={camper.gallery[0]?.thumb}
             alt={camper.name}
           />
@@ -23,7 +25,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
             <div className={styles.cardHead}>
               <p>{camper.name}</p>
               <div className={styles.price}>
-                <p>€{camper.price.toFixed(2)}</p>
+                <p>€{formatPrice(camper.price)}</p>
                 <button
                   onClick={() => toggleFavorite(camper.id)}
                   className={styles.favoriteButton}
@@ -41,7 +43,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
                 <svg className={styles.reviewIcon}>
                   <use href="/reviews.svg#reviews-filled" />
                 </svg>
-                {camper.rating}({camper.reviews.length} Reviews)
+                {formatRating(camper.rating)}({camper.reviews.length} Reviews)
               </span>
               <span>
                 <svg className={styles.mapIcon}>

@@ -29,13 +29,13 @@ const featureDetails: { key: DetailsKey; label: string }[] = [
 
 const Features = ({ camper }: Props) => {
   return (
-    <section>
-      <div>
+    <section className={styles.wrapper}>
+      <div className={styles.iconBox}>
         {featureIcons.map(({ key, label, icon }) => {
           const value = camper[key];
           if (value === undefined || value === false) return null;
           return (
-            <div key={key}>
+            <div className={styles.iconItem} key={key}>
               <svg className={styles.icon} aria-label={label}>
                 <use href={`/campers-sprite.svg#${icon}`} />
               </svg>
@@ -47,7 +47,7 @@ const Features = ({ camper }: Props) => {
         })}
       </div>
       <div className={styles.list}>
-        <h3>Vehicle details</h3>
+        <h3 className={styles.title}>Vehicle details</h3>
         <ul className={styles.listDetails}>
           {featureDetails.map(({ key, label }) => {
             const value = camper[key];

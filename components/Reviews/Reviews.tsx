@@ -1,6 +1,6 @@
 'use client';
 import { Review } from '@/types/camper';
-
+import styles from './Reviews.module.css';
 interface Props {
   reviews: Review[];
 }
@@ -17,9 +17,18 @@ const Reviews = ({ reviews }: Props) => {
             <div>
               <div>{reviewer_name.charAt(0).toUpperCase()}</div>
               <span>{reviewer_name}</span>
-              <span>
-                {'★'.repeat(reviewer_rating)}
-                {'☆'.repeat(5 - reviewer_rating)}
+              <span className={styles.rating}>
+                {[...Array(5)].map((_, index) => (
+                  <svg key={index} className={styles.retingIcon}>
+                    <use
+                      href={
+                        index < reviewer_rating
+                          ? '/reviews.svg#reviews-filled'
+                          : '/reviews.svg#reviews'
+                      }
+                    />
+                  </svg>
+                ))}
               </span>
             </div>
             <p>{comment}</p>

@@ -1,26 +1,20 @@
 import Image from 'next/image';
-
+import styles from './Gallery.module.css';
 interface Props {
   images: { thumb: string; original: string }[];
 }
 
 const Gallery = ({ images }: Props) => {
   return (
-    <div>
+    <div className={styles.gallery}>
       {images.map((src, index) => (
-        <div
-          style={{
-            position: 'relative',
-            width: '292px',
-            height: '320px',
-          }}
-          key={index}
-        >
+        <div className={styles.galleryBox} key={index}>
           <Image
+            className={styles.galleryImg}
             src={src.thumb}
             alt={`Camper image ${index + 1}`}
             fill
-            sizes="(max-width: 768px) 100vw, 33vw"
+            // sizes="(max-width: 768px) 100vw, 33vw"
             priority={index === 0}
           ></Image>
         </div>

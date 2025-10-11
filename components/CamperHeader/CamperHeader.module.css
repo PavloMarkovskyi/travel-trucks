@@ -1,0 +1,24 @@
+.title {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.review {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.text {
+  text-decoration: underline;
+}
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.mapIcon,
+.reviewIcon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+}
