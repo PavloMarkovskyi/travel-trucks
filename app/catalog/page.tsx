@@ -42,8 +42,9 @@ const CatalogPage = () => {
 
   return (
     <main>
-      <FiltersComponent />
-
+      <aside>
+        <FiltersComponent />
+      </aside>
       <section style={{ flex: 1 }}>
         {campers.length > 0
           ? campers.map(camper => (

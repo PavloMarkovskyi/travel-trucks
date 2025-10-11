@@ -1,85 +1,169 @@
 'use client';
 
 import { useCamperStore } from '@/lib/stores/useCamperStore';
+import styles from './Filters.module.css';
+import { Filters } from '@/types/camper';
 
-const Filters = () => {
-  const { setFilters } = useCamperStore();
+const FiltersComponent = () => {
+  const { filters, setFilters } = useCamperStore();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const target = e.target as HTMLInputElement | HTMLSelectElement;
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters({ [e.target.name]: e.target.value });
+  };
 
-    const { name, value, type } = target;
-    const patch =
-      type === 'checkbox'
-        ? { [name]: (target as HTMLInputElement).checked }
-        : { [name]: value };
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    if (checked) {
+      setFilters({ [name]: true });
+    } else {
+      setFilters({ ...filters, [name]: undefined });
+    }
+  };
 
-    setFilters(patch);
+  const handleBodyTypeToggle = (value: Filters['form']) => {
+    setFilters({
+      ...filters,
+      form: filters.form === value ? '' : value,
+    });
   };
 
   return (
-    <form>
-      <input
-        type="text"
-        name="location"
-        placeholder="Location"
-        onChange={handleChange}
-      />
-
-      <fieldset>
-        <legend>Vehicle Type</legend>
-        <label>
+    <aside>
+      <form>
+        <div>
+          <svg className={styles.icon}>
+            <use href="/reviews.svg#map" />
+          </svg>
           <input
-            type="radio"
-            name="form"
-            value="panelTruck"
-            onChange={handleChange}
+            type="text"
+            name="location"
+            placeholder="Location"
+            onChange={handleTextChange}
           />
-          Van
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="form"
-            value="integrated"
-            onChange={handleChange}
-          />
-          Fully Integrated
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="form"
-            value="alcove"
-            onChange={handleChange}
-          />
-          Alcove
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Vehicle Equipment</legend>
-        <label>
-          <input type="checkbox" name="AC" onChange={handleChange} />
-          AC
-        </label>
-        <label>
-          <input type="checkbox" name="kitchen" onChange={handleChange} />
-          Kitchen
-        </label>
-        <label>
-          <input type="checkbox" name="TV" onChange={handleChange} />
-          TV
-        </label>
-        <label>
-          <input type="checkbox" name="bathroom" onChange={handleChange} />
-          Bathroom
-        </label>
-      </fieldset>
-    </form>
+        </div>
+        <fieldset>
+          <legend>Vehicle Equipment</legend>
+          <label>
+            <input
+              type="checkbox"
+              name="AC"
+              onChange={handleCheckboxChange}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#wind" />
+            </svg>
+            <span>AC</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="transmission"
+              onChange={handleCheckboxChange}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#diagram" />
+            </svg>
+            <span>Automatic</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="kitchen"
+              onChange={handleCheckboxChange}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#cup-hot" />
+            </svg>
+            <span>Kitchen</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="TV"
+              onChange={handleCheckboxChange}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#tv" />
+            </svg>
+            <span>TV</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="bathroom"
+              onChange={handleCheckboxChange}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#shower" />
+            </svg>
+            <span>Bathroom</span>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Vehicle Type</legend>
+          <label
+            className={
+              filters.form === 'panelTruck'
+                ? styles.typeOption + '' + styles.active
+                : styles.typeOption
+            }
+          >
+            <input
+              type="checkbox"
+              checked={filters.form === 'panelTruck'}
+              onChange={() => handleBodyTypeToggle('panelTruck')}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#bi-grid" />
+            </svg>
+            <span>Van</span>
+          </label>
+          <label
+            className={
+              filters.form === 'integrated'
+                ? styles.typeOption + '' + styles.active
+                : styles.typeOption
+            }
+          >
+            <input
+              type="checkbox"
+              checked={filters.form === 'integrated'}
+              onChange={() => handleBodyTypeToggle('integrated')}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#grid" />
+            </svg>
+            <span>Fully Integrated</span>
+          </label>
+          <label
+            className={
+              filters.form === 'alcove'
+                ? styles.typeOption + '' + styles.active
+                : styles.typeOption
+            }
+          >
+            <input
+              type="checkbox"
+              checked={filters.form === 'alcove'}
+              onChange={() => handleBodyTypeToggle('alcove')}
+              className={styles.hiddenInput}
+            />
+            <svg className={styles.icon}>
+              <use href="/campers-sprite.svg#grid-gap" />
+            </svg>
+            <span>Alcove</span>
+          </label>
+        </fieldset>
+      </form>
+    </aside>
   );
 };
 
-export default Filters;
+export default FiltersComponent;

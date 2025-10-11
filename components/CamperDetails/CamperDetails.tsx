@@ -7,6 +7,7 @@ import { Camper } from '@/types/camper';
 import Tabs from '../Tabs/Tabs';
 import Features from '../Features/Features';
 import Reviews from '../Reviews/Reviews';
+import BookingForm from '../BookingForm/BookingForm';
 interface Props {
   camper: Camper;
 }
@@ -25,6 +26,7 @@ const CamperDetails = ({ camper }: Props) => {
         <Reviews reviews={camper.reviews} />
       )}
       ;
+      <BookingForm />
     </div>
   );
 };

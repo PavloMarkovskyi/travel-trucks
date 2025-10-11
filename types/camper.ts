@@ -36,21 +36,17 @@ export interface Review {
 }
 export type Filters = Partial<{
   location: string;
-  form: 'panelTruck' | 'integrated' | 'alcove';
+  form: ''|'panelTruck' | 'integrated' | 'alcove';
   AC: boolean;
   kitchen: boolean;
   bathroom: boolean;
   TV: boolean;
-}>;
 
-export interface GetCampersParams { 
-    page?: number;
-    perPage?: number;
-    location?: string;
-    form?: string;
-    AC?: boolean;
-    kitchen?: boolean;
-}
+}>& {
+  [key: string]: string | boolean | undefined;
+};
+
+
 
 export type FeatureIconKey = 'transmission' | 'engine' | 'AC' | 'bathroom' | 'kitchen' | 'TV' | 'radio' | 'refrigerator' | 'microwave' | 'gas' | 'water';
 export type DetailsKey = 'form' | 'length' | 'width' | 'height' | 'tank' | 'consumption';
