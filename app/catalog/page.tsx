@@ -47,16 +47,24 @@ const CatalogPage = () => {
         <FiltersComponent />
       </aside>
       <section>
-        {campers.length > 0
-          ? campers.map(camper => (
-              <CamperCard key={camper.id} camper={camper} />
-            ))
-          : !loading && <p>No campers found</p>}
-
-        {hasMore && !loading && (
-          <button onClick={() => setPage(page + 1)}>Load more</button>
-        )}
-        {loading && <p>Loading...</p>}
+        <div className={styles.catalog}>
+          {campers.length > 0
+            ? campers.map(camper => (
+                <CamperCard key={camper.id} camper={camper} />
+              ))
+            : !loading && <p>No campers found</p>}
+        </div>
+        <div className={styles.catalogBtn}>
+          {hasMore && !loading && (
+            <button
+              className={styles.loadBtn}
+              onClick={() => setPage(page + 1)}
+            >
+              Load more
+            </button>
+          )}
+          {loading && <p>Loading...</p>}
+        </div>
       </section>
     </main>
   );

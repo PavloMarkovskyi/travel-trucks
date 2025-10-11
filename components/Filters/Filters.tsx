@@ -75,7 +75,13 @@ const FiltersComponent = () => {
         <p className={styles.filterTitle}>Filters</p>
         <fieldset className={styles.fieldSet}>
           <legend className={styles.title}>Vehicle Equipment</legend>
-          <label>
+          <label
+            className={
+              filters.AC
+                ? `${styles.filterItem} ${styles.active}`
+                : styles.filterItem
+            }
+          >
             <input
               type="checkbox"
               name="AC"
@@ -87,7 +93,13 @@ const FiltersComponent = () => {
             </svg>
             <span>AC</span>
           </label>
-          <label>
+          <label
+            className={
+              filters.transmission
+                ? `${styles.filterItem} ${styles.active}`
+                : styles.filterItem
+            }
+          >
             <input
               type="checkbox"
               name="transmission"
@@ -99,7 +111,13 @@ const FiltersComponent = () => {
             </svg>
             <span>Automatic</span>
           </label>
-          <label>
+          <label
+            className={
+              filters.kitchen
+                ? `${styles.filterItem} ${styles.active}`
+                : styles.filterItem
+            }
+          >
             <input
               type="checkbox"
               name="kitchen"
@@ -111,7 +129,13 @@ const FiltersComponent = () => {
             </svg>
             <span>Kitchen</span>
           </label>
-          <label>
+          <label
+            className={
+              filters.TV
+                ? `${styles.filterItem} ${styles.active}`
+                : styles.filterItem
+            }
+          >
             <input
               type="checkbox"
               name="TV"
@@ -123,7 +147,13 @@ const FiltersComponent = () => {
             </svg>
             <span>TV</span>
           </label>
-          <label>
+          <label
+            className={
+              filters.bathroom
+                ? `${styles.filterItem} ${styles.active}`
+                : styles.filterItem
+            }
+          >
             <input
               type="checkbox"
               name="bathroom"
@@ -141,7 +171,7 @@ const FiltersComponent = () => {
           <label
             className={
               filters.form === 'panelTruck'
-                ? styles.typeOption + '' + styles.active
+                ? `${styles.typeOption} ${styles.active}`
                 : styles.typeOption
             }
           >
@@ -159,7 +189,7 @@ const FiltersComponent = () => {
           <label
             className={
               filters.form === 'integrated'
-                ? styles.typeOption + '' + styles.active
+                ? `${styles.typeOption} ${styles.active}`
                 : styles.typeOption
             }
           >
@@ -177,7 +207,7 @@ const FiltersComponent = () => {
           <label
             className={
               filters.form === 'alcove'
-                ? styles.typeOption + '' + styles.active
+                ? `${styles.typeOption} ${styles.active}`
                 : styles.typeOption
             }
           >

@@ -1,8 +1,18 @@
 .form {
   width: 360px;
 }
+.filterBox {
+  margin-bottom: 8px;
+}
 .fieldSet {
   border: none;
+  display: flex;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+  padding-bottom: 32px;
+}
+.fieldSet span {
+  padding-top: 8px;
 }
 .searchBox {
   position: relative;
@@ -33,16 +43,21 @@
 }
 
 .searchBtn {
-  padding: 16px 56px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 16px;
   border: none;
+  width: 166px;
+  display: inline-block;
+  text-align: center;
   background-color: #e44848;
   color: #fff;
   border-radius: 50px;
   cursor: pointer;
 }
-.filterBox {
-  margin-bottom: 40px;
-}
+
 .filterTitle {
   font-size: 16px;
   color: #6c717b;
@@ -55,13 +70,33 @@
   width: 360px;
   margin-bottom: 24px;
 }
-
+.filterItem,
+.typeOption {
+  display: flex;
+  flex-direction: column;
+  height: 96px;
+  width: 112px;
+  border: 1px solid #dadde1;
+  padding: 16px;
+  align-items: center;
+  border-radius: 12px;
+  text-align: center;
+}
+.active {
+  display: flex;
+  flex-direction: column;
+  width: 112px;
+  border: 1px solid #e44848;
+  padding: 16px 40px;
+  align-items: center;
+  border-radius: 12px;
+}
 .icon {
   fill: none;
   width: 32px;
   height: 32px;
 }
-
+/* hiddenInput Прихоовує галочку checkbox */
 .hiddenInput {
   position: absolute;
   opacity: 0;
