@@ -1,3 +1,5 @@
+import ClipLoader from '@/components/ClipLoader/ClipLoader';
+
 export default function Loader() {
-  return <div style={{ padding: 20 }}>Loading...</div>;
+  return <ClipLoader />;
 }

@@ -14,7 +14,7 @@ const Gallery = ({ images }: Props) => {
             src={src.thumb}
             alt={`Camper image ${index + 1}`}
             fill
-            // sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1440px) 50vw, 33vw"
             priority={index === 0}
           ></Image>
         </div>
