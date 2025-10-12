@@ -43,7 +43,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
                 <svg className={styles.reviewIcon}>
                   <use href="/reviews.svg#reviews-filled" />
                 </svg>
-                {formatRating(camper.rating)}({camper.reviews.length} Reviews)
+                {formatRating(camper.rating)} ({camper.reviews.length} Reviews)
               </span>
               <span>
                 <svg className={styles.mapIcon}>
