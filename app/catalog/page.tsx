@@ -6,6 +6,7 @@ import { getCampers } from '@/lib/clientApi';
 import FiltersComponent from '@/components/Filters/Filters';
 import CamperCard from '@/components/CamperCard/CamperCard';
 import styles from './CatalogPage.module.css';
+import ScreenLoad from '@/components/ClipLoader/ClipLoader';
 
 const CatalogPage = () => {
   const {
@@ -63,7 +64,7 @@ const CatalogPage = () => {
               Load more
             </button>
           )}
-          {loading && <p>Loading...</p>}
+          {loading && <ScreenLoad />}
         </div>
       </section>
     </main>
