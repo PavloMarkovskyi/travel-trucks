@@ -2,7 +2,7 @@ import { useCamperStore } from '@/lib/stores/useCamperStore';
 import { Camper } from '@/types/camper';
 import Image from 'next/image';
 import styles from './CamperCard.module.css';
-import { formatPrice, formatRating } from '@/utils/fomat';
+import { formatlable, formatPrice, formatRating } from '@/utils/fomat';
 
 const CamperCard = ({ camper }: { camper: Camper }) => {
   const { favorites, toggleFavorite } = useCamperStore();
@@ -64,7 +64,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
                 <svg className={styles.featureIcon}>
                   <use href="/campers-sprite.svg#diagram" />
                 </svg>
-                {camper.transmission}
+                {formatlable(camper.transmission)}
               </span>
             )}
             {camper.engine && (
@@ -72,7 +72,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
                 <svg className={styles.featureIcon}>
                   <use href="/campers-sprite.svg#fuel-pump" />
                 </svg>
-                {camper.engine}
+                {formatlable(camper.engine)}
               </span>
             )}
             {camper.kitchen && (

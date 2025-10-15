@@ -1,0 +1,21 @@
+.inputDate {
+  font-family: var(--font-inter), sans-serif;
+  padding: 18px;
+  background: #f7f7f7;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #101828;
+  outline: none;
+  box-sizing: border-box;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.inputDate::placeholder {
+  color: #6c717b;
+}

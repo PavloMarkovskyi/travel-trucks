@@ -64,9 +64,9 @@ const CatalogPage = () => {
               Load more
             </button>
           )}
-          {loading && <ScreenLoad />}
         </div>
       </section>
+      {loading && <ScreenLoad />}
     </main>
   );
 };

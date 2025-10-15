@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './BookingForm.module.css';
+import DatePickerField from '../DatePicker/DatePicker';
 
 const BookingForm = () => {
   const [form, setForm] = useState({
@@ -16,6 +17,9 @@ const BookingForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleDateChange = (dateString: string) => {
+    setForm({ ...form, date: dateString });
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +54,7 @@ const BookingForm = () => {
           onChange={handleChange}
           required
         />
-        <input
+        {/* <input
           className={styles.inputDate}
           type="text"
           name="date"
@@ -62,7 +66,8 @@ const BookingForm = () => {
             if (!e.target.value) e.target.type = 'text';
           }}
           required
-        />
+        /> */}
+        <DatePickerField value={form.date} onChange={handleDateChange} />
         <textarea
           className={styles.textarea}
           name="comment"

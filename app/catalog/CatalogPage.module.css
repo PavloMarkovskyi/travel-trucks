@@ -25,3 +25,7 @@
   border-radius: 50px;
   cursor: pointer;
 }
+.loadBtn:hover,
+.loadBtn:focus {
+  border: 1px solid #d84343;
+}
