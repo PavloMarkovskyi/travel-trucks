@@ -23,10 +23,11 @@ h2.react-datepicker__current-month {
 .react-datepicker__navigation--previous {
   margin-top: 8px;
 }
+
 .react-datepicker__navigation-icon--previous::before,
 .react-datepicker__navigation-icon--next:before {
   top: 5px;
-  color: #475467;
+  border-color: #475467;
 }
 .react-datepicker__day-names {
   border-bottom: 1px solid #475467;
