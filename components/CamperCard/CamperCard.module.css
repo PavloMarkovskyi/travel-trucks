@@ -1,5 +1,6 @@
 .main {
   margin-bottom: 32px;
+  max-width: 888px;
 }
 .cardBox {
   border: 1px solid #dadde1;
@@ -15,6 +16,9 @@
 .image {
   object-fit: cover;
   border-radius: 10px;
+}
+.cardInfo {
+  width: 524px;
 }
 .cardHead {
   display: flex;
