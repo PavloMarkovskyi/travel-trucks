@@ -23,9 +23,9 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
         <div className={styles.cardInfo}>
           <div>
             <div className={styles.cardHead}>
-              <p>{camper.name}</p>
-              <div className={styles.price}>
-                <p>€{formatPrice(camper.price)}</p>
+              <p className={styles.cardTitle}>{camper.name}</p>
+              <div className={styles.priceBlock}>
+                <p className={styles.price}>€{formatPrice(camper.price)}</p>
                 <button
                   onClick={() => toggleFavorite(camper.id)}
                   className={styles.favoriteButton}

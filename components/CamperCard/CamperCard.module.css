@@ -27,11 +27,12 @@
   font-weight: 600;
   margin-bottom: 8px;
 }
-.price {
+.priceBlock {
   display: flex;
   gap: 13px;
   align-items: center;
 }
+
 .favoriteButton {
   background: none;
   border: none;
@@ -96,4 +97,8 @@
   color: #fff;
   border-radius: 50px;
   cursor: pointer;
+}
+.cardBtn:hover,
+.cardBtn:focus {
+  background-color: #d84343;
 }
