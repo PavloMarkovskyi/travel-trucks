@@ -10,8 +10,8 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
 
   return (
     <main className={styles.main}>
-      <div className={styles.cardBox}>
-        <div className={styles.cardImg}>
+      <article className={styles.cardBox}>
+        <figure className={styles.cardImg}>
           <Image
             className={styles.image}
             fill
@@ -19,86 +19,85 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
             src={camper.gallery[0]?.thumb}
             alt={camper.name}
           />
-        </div>
+        </figure>
         <div className={styles.cardInfo}>
-          <div>
-            <div className={styles.cardHead}>
-              <p className={styles.cardTitle}>{camper.name}</p>
-              <div className={styles.priceBlock}>
-                <p className={styles.price}>€{formatPrice(camper.price)}</p>
-                <button
-                  onClick={() => toggleFavorite(camper.id)}
-                  className={styles.favoriteButton}
-                >
-                  <svg className={styles.heartIcon}>
-                    <use
-                      href={`/favorites.svg#${isFavorite ? 'heart-filled' : 'heart-outline'}`}
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className={styles.reviews}>
-              <span>
-                <svg className={styles.reviewIcon}>
-                  <use href="/reviews.svg#reviews-filled" />
+          <header className={styles.cardHead}>
+            <p className={styles.cardTitle}>{camper.name}</p>
+            <div className={styles.priceBlock}>
+              <p className={styles.price}>€{formatPrice(camper.price)}</p>
+              <button
+                onClick={() => toggleFavorite(camper.id)}
+                className={styles.favoriteButton}
+              >
+                <svg className={styles.heartIcon}>
+                  <use
+                    href={`/favorites.svg#${isFavorite ? 'heart-filled' : 'heart-outline'}`}
+                  />
                 </svg>
-                {formatRating(camper.rating)} ({camper.reviews.length} Reviews)
-              </span>
-              <span>
-                <svg className={styles.mapIcon}>
-                  <use href="/reviews.svg#map" />
-                </svg>
-                {camper.location}
-              </span>
+              </button>
             </div>
+          </header>
+          <div className={styles.reviews}>
+            <span>
+              <svg className={styles.reviewIcon}>
+                <use href="/reviews.svg#reviews-filled" />
+              </svg>
+              {formatRating(camper.rating)} ({camper.reviews.length} Reviews)
+            </span>
+            <span>
+              <svg className={styles.mapIcon}>
+                <use href="/reviews.svg#map" />
+              </svg>
+              {camper.location}
+            </span>
           </div>
+
           <p className={styles.description}>
             {camper.description.length > 50
               ? camper.description.slice(0, 50) + '...'
               : camper.description}
           </p>
-          <div className={styles.features}>
+          <ul className={styles.features}>
             {camper.transmission && (
-              <span className={styles.cardIcon}>
+              <li className={styles.cardIcon}>
                 <svg className={styles.featureIcon}>
                   <use href="/campers-sprite.svg#diagram" />
                 </svg>
                 {formatlable(camper.transmission)}
-              </span>
+              </li>
             )}
             {camper.engine && (
-              <span className={styles.cardIcon}>
+              <li className={styles.cardIcon}>
                 <svg className={styles.featureIcon}>
                   <use href="/campers-sprite.svg#fuel-pump" />
                 </svg>
                 {formatlable(camper.engine)}
-              </span>
+              </li>
             )}
             {camper.kitchen && (
-              <span className={styles.cardIcon}>
+              <li className={styles.cardIcon}>
                 <svg className={styles.featureIcon}>
                   <use href="/campers-sprite.svg#cup-hot" />
                 </svg>
                 Kitchen
-              </span>
+              </li>
             )}
             {camper.AC && (
-              <span className={styles.cardIcon}>
+              <li className={styles.cardIcon}>
                 <svg className={styles.featureIcon}>
                   <use href="/campers-sprite.svg#wind" />
                 </svg>
                 AC
-              </span>
+              </li>
             )}
-          </div>
+          </ul>
           <div>
             <button className={styles.cardBtn}>
               <a href={`/catalog/${camper.id}`}>Show More</a>
             </button>
           </div>
         </div>
-      </div>
+      </article>
     </main>
   );
 };

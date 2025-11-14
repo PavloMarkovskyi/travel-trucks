@@ -48,13 +48,15 @@ const CatalogPage = () => {
         <FiltersComponent />
       </aside>
       <section>
-        <div className={styles.catalog}>
+        <ul className={styles.catalog}>
           {campers.length > 0
             ? campers.map(camper => (
-                <CamperCard key={camper.id} camper={camper} />
+                <li key={camper.id}>
+                  <CamperCard camper={camper} />
+                </li>
               ))
             : !loading && <p>No campers found</p>}
-        </div>
+        </ul>
         <div className={styles.catalogBtn}>
           {hasMore && !loading && (
             <button

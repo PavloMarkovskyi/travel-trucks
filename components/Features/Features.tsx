@@ -30,35 +30,39 @@ const featureDetails: { key: DetailsKey; label: string }[] = [
 const Features = ({ camper }: Props) => {
   return (
     <section className={styles.wrapper}>
-      <div className={styles.iconBox}>
-        {featureIcons.map(({ key, label, icon }) => {
-          const value = camper[key];
-          if (value === undefined || value === false) return null;
-          return (
-            <div className={styles.iconItem} key={key}>
-              <svg className={styles.icon} aria-label={label}>
-                <use href={`/campers-sprite.svg#${icon}`} />
-              </svg>
-              <span>
-                {typeof value === 'boolean' ? label : renderValue(value)}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-      <div className={styles.list}>
-        <h3 className={styles.title}>Vehicle details</h3>
-        <ul className={styles.listDetails}>
-          {featureDetails.map(({ key, label }) => {
+      <div>
+        <ul className={styles.iconList}>
+          {featureIcons.map(({ key, label, icon }) => {
             const value = camper[key];
+            if (value === undefined || value === false) return null;
             return (
-              <li key={key} className={styles.item}>
-                <p className={styles.listDeatailsItem}>{label}</p>
-                <p className={styles.listDeatailsItem}>{renderValue(value)}</p>
+              <li className={styles.iconItem} key={key}>
+                <svg className={styles.icon} aria-label={label}>
+                  <use href={`/campers-sprite.svg#${icon}`} />
+                </svg>
+                <span>
+                  {typeof value === 'boolean' ? label : renderValue(value)}
+                </span>
               </li>
             );
           })}
         </ul>
+      </div>
+      <div className={styles.list}>
+        <h3 className={styles.title}>Vehicle details</h3>
+        <dl className={styles.listDetails}>
+          {featureDetails.map(({ key, label }) => {
+            const value = camper[key];
+            return (
+              <div key={key} className={styles.item}>
+                <dt className={styles.listDeatailsItem}>{label}</dt>
+                <dd className={styles.listDeatailsItem}>
+                  {renderValue(value)}
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
       </div>
     </section>
   );

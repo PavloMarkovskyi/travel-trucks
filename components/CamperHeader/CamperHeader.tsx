@@ -7,7 +7,7 @@ interface Props {
 
 const CamperHeader = ({ camper }: Props) => {
   return (
-    <div>
+    <header>
       <h1 className={styles.title}>{camper.name}</h1>
       <div className={styles.review}>
         <p className={styles.text}>
@@ -24,7 +24,7 @@ const CamperHeader = ({ camper }: Props) => {
         </p>
       </div>
       <p className={styles.price}>€{formatPrice(camper.price)}</p>
-    </div>
+    </header>
   );
 };
 
